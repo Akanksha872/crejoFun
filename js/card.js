@@ -5,10 +5,6 @@ function setInitialPlaceholder(){
     div.setAttribute("class", "white-text");
     div.innerHTML ="YOUR NAME HERE";
 
-    div = document.getElementById('card-cvv');
-    div.setAttribute("class", "white-text");
-    div.innerHTML ="...";
-
     div = document.getElementById('card-number');
     div.setAttribute("class", "white-text");
     div.innerHTML =".... .... .... ....";
