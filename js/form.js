@@ -4,7 +4,22 @@ function isNumberKey(evt){
     return !(charCode > 31 && (charCode < 48 || charCode > 57));
 }
 
+function addSpace(event){ 
+    let removedSpaced = event.target.value.split(" ");
+    let cardNumber = removedSpaced.join('');
+    console.log(cardNumber);
+    let spacedCardNumber = cardNumber.match(/.{1,4}/g).join(" ");
+    event.target.value = spacedCardNumber;
+    setCardNumber(spacedCardNumber);
+}
 
+function addSlash(event){ 
+    let removedSlash = event.target.value.split("/");
+    let cardNumber = removedSlash.join('');
+    let spacedCardNumber = cardNumber.match(/.{1,2}/g).join("/");
+    event.target.value = spacedCardNumber;
+    setDate(spacedCardNumber);
+}
 
 function setName(event){
     let div = document.getElementById('user-name');
@@ -12,18 +27,16 @@ function setName(event){
     div.innerHTML =event.target.value;
 }
 
-
 function setCardNumber(value){
+    var placeholder = ".... .... .... ....";
     let div = document.getElementById('card-number');
     div.setAttribute("class", "white-text");
-    for(let i=value.length; i< 18 ; i++){
-        if(i%4 == 0){
-        value = value + ' ';
-        }else{
-        value = value + '.';
-        }
+    for(let i=0; i<value.length; i++){
+      placeholder = placeholder.slice(0, i) 
+                    + value[i] 
+                    + placeholder.slice(i+1); 
     }
-    div.innerHTML =value;
+    div.innerHTML =placeholder;
 }
 
 function setDate(value){
